@@ -35,32 +35,24 @@ public class DemoCustomCyclicBarrier {
     }
 
     private Runnable createThreadForTest(int seconds) {
-        return new Runnable() {
-            @Override
-            public void run() {
-                //System.out.println(seconds);
-                try {
-                    Thread.sleep(seconds *  1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        return () -> {
+            //System.out.println(seconds);
+            try {
+                Thread.sleep(seconds *  1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
-                try {
-                    cyclicBarrier.await();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            try {
+                cyclicBarrier.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         };
     }
 
     private Runnable createBarrierAction() {
-        return new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Barrier is passed!\n");
-            }
-        };
+        return () -> System.out.println("Barrier is passed!\n");
     }
 
 }
