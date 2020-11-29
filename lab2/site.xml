@@ -1,0 +1,52 @@
+<?xml version = "1.0"?>
+
+<site>
+    <page id="4">
+        <title>Home</title>
+        <type>news</type>
+        <chars>
+            <emailAvailability>true</emailAvailability>
+            <newsAvailability>true</newsAvailability>
+            <archiveAvailability>true</archiveAvailability>
+            <pollsAvailability>anonymous</pollsAvailability>
+        </chars>
+        <authorize>true</authorize>
+    </page>
+
+    <page id="1">
+        <title>Shop</title>
+        <type>portal</type>
+        <chars>
+            <emailAvailability>false</emailAvailability>
+            <newsAvailability>false</newsAvailability>
+            <archiveAvailability>false</archiveAvailability>
+            <pollsAvailability>none</pollsAvailability>
+        </chars>
+        <authorize>false</authorize>
+    </page>
+
+    <page id="10">
+        <title>Contacts</title>
+        <type>portal</type>
+        <chars>
+            <emailAvailability>false</emailAvailability>
+            <newsAvailability>false</newsAvailability>
+            <archiveAvailability>false</archiveAvailability>
+            <pollsAvailability>none</pollsAvailability>
+        </chars>
+        <authorize>true</authorize>
+    </page>
+
+    <page id="22">
+        <title>About us</title>
+        <type>advertising</type>
+        <chars>
+            <emailAvailability>true</emailAvailability>
+            <newsAvailability>false</newsAvailability>
+            <archiveAvailability>false</archiveAvailability>
+            <pollsAvailability>auth</pollsAvailability>
+        </chars>
+        <authorize>true</authorize>
+    </page>
+
+</site>

@@ -1,0 +1,49 @@
+<?xml version = "1.0"?>
+
+<xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema">
+    <xs:element name = 'site'>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name = 'page' type = 'PageType' minOccurs = '0'
+                            maxOccurs = 'unbounded' />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name = "PageType">
+        <xs:sequence>
+            <xs:element name = "title" type = "xs:string"/>
+            <xs:element name="type">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="news"/>
+                        <xs:enumeration value="advertising"/>
+                        <xs:enumeration value="mirror"/>
+                        <xs:enumeration value="portal"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="chars" type="CharsType"/>
+            <xs:element name="authorize" type="xs:boolean" default="false"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:int"/>
+    </xs:complexType>
+
+    <xs:complexType name = "CharsType">
+        <xs:sequence>
+            <xs:element name="emailAvailability" type="xs:boolean"/>
+            <xs:element name="newsAvailability" type="xs:boolean"/>
+            <xs:element name="archiveAvailability" type="xs:boolean"/>
+            <xs:element name="pollsAvailability">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="none"/>
+                        <xs:enumeration value="anonymous"/>
+                        <xs:enumeration value="auth"/>
+                        <xs:enumeration value="purchases"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,15 @@
+<?xml version = "1.0"?>
+
+<site>
+    <page id="4">
+        <title>Home</title>
+        <type>news</type>
+        <chars>
+            <emailAvailability>tru</emailAvailability>
+            <newsAvailability>true</newsAvailability>
+            <archiveAvailability>true</archiveAvailability>
+            <pollsAvailability>anonymous</pollsAvailability>
+        </chars>
+        <authorize>true</authorize>
+    </page>
+</site>
