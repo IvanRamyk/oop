@@ -69,12 +69,12 @@ public class Main {
         strun.run();
         rvrun.run();
 
+
         try {
             strun.join();
             rvrun.join();
-        }
-        catch (InterruptedException e) {
-            System.out.println("Something's gone wrong");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
 
@@ -87,14 +87,14 @@ public class Main {
         FinderStraight finderStraight = new FinderStraight(alpha, beta, x_p);
         FinderReverse finderReverse = new FinderReverse(ksi, theta, x_p);
 
-        finderStraight.run();
-        finderReverse.run();
+        finderStraight.start();
+        finderReverse.start();
 
         try {
             finderReverse.join();
             finderStraight.join();
         } catch (InterruptedException e) {
-
+            e.printStackTrace();
         }
 
         System.out.println();
