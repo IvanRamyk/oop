@@ -24,7 +24,7 @@ public class CounterValidator {
                 numInc--;
             else
                 numDec--;
-            threads.add(new Thread(new CounterThread(counter, lock, isInc, 10)));
+            threads.add(new Thread(new CounterThread(counter, lock, isInc, 20000)));
         }
         return threads;
     }

@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -39,6 +40,40 @@ public class Main {
         }
     }
 
+    private static void generateMatrix(int num) {
+        matrix = new Vector<>(num);
+        matrix.setSize(num);
+        f = new Vector<>(num);
+        f.setSize(num);
+        Random random = new Random();
+        Double sum = 0.0;
+        Double temp = random.nextDouble() % 100;/*
+        sum += temp;
+        matrix.get(0).set(1, temp);
+        temp = random.nextDouble() % 100;
+        sum += temp;
+        matrix.get(0).set(2, temp);
+        f.set(0, sum);
+        sum = 0.0;*/
+
+        for (int i = 0; i < num; ++i) {
+            sum = 0.0;
+            Vector<Double> new_row = new Vector<>(3);
+            new_row.setSize(3);
+            for (int j = 0; j < 3; ++j) {
+                if ((i == 0 && j == 0) || (i == num - 1 && j == 2))
+                    temp = 0.0;
+                else
+                    temp = random.nextDouble() % 100;
+                sum += temp;
+                new_row.set(j, temp);
+            }
+            matrix.set(i, new_row);
+            f.set(i, sum);
+        }
+    }
+
+
     private static void printEquation(Vector<Vector<Double>> matrix, Vector <Double> f){
         for (int i = 0; i < matrix.size(); ++i) {
             var row = matrix.get(i);
@@ -57,8 +92,11 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        readMatrix();
+        //readMatrix();
+        generateMatrix(100);
         printEquation(matrix, f);
+
+
 
         StraightRun strun = new StraightRun(matrix, f);
         ReverseRun rvrun = new ReverseRun(matrix, f);

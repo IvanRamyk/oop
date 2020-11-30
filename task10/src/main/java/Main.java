@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) throws Exception {
-        final CustomThreadPool threadPool = new CustomThreadPool(5);
+        final CustomThreadPool threadPool = new CustomThreadPool(21);
         for (int i = 0; i < 20; i++) {
             int finalI = i;
             threadPool.execute(() -> {

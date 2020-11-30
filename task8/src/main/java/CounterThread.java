@@ -13,16 +13,12 @@ class CounterThread implements Runnable {
 
     public void run() {
         for (int i = 0; i < cntIterations; i++) {
-            try {
-                lock.lock();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
             if (isIncrement)
                 counter.increment();
             else
                 counter.decrement();
-            lock.unlock();
+
             System.out.println("Counter value is " + counter.toString());
         }
     }

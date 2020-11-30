@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.parsers.PageDOMParserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-29T18:22:50" hostname="DESKTOP-J5I5F8U" time="0.112">
-  <properties/>
-  <testcase name="testParse" classname="com.parsers.PageDOMParserTest" time="0.112"/>
-  <system-out><![CDATA[SAX Exception: cvc-datatype-valid.1.2.1: 'tru' is not a valid value for 'boolean'.
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
