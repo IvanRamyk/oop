@@ -1,7 +1,7 @@
 import React from "react";
 import AirportList from "../components/airports_list";
-import AirportsPageInfo from "../components/AirportPageInfo";
 import {Box, Container, Grid, Paper} from "@material-ui/core";
+import {getAirports} from "../services/AirplaneApiService";
 
 
 
@@ -10,48 +10,27 @@ class Airports extends React.Component {
 
 
   state = {
-    airports: [
-        {
-            "name": "Boryspil",
-            "city": "Kyiv",
-            "country": "Ukraine"
-        }
-    ]
+    airports: []
   }
 
   gettingFlight = async () => {
-    /*fetch(`http://localhost:8081/airports`)
-        .then(res => res.json())
-        .then((data) => {
-          this.setState({ airports: data });
-
-          console.log(data);
-        })
-        .catch(console.log)*/
+      let airs = await getAirports()
       this.setState({
-          airports: [
-              {
-                  "name": "A",
-                  "city": "A city",
-                  "country": "Ukraine"
-              }
-          ]
+          airports: airs
       });
 
   }
 
   constructor(props) {
     super(props);
-    //this.gettingFlight();
+    this.gettingFlight();
   }
 
   render() {
+    console.log(this.state.airports);
     return (
         <Box>
             <Container fixed>
-                <Grid container>
-                    <Grid item md={6}></Grid>
-                </Grid>
                 <AirportList airports={this.state.airports} />
             </Container>
         </Box>

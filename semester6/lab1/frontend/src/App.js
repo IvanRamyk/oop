@@ -12,6 +12,7 @@ import {
 import {AppBar, Box, Button, Container, IconButton, Toolbar, Typography} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Airports from "./pages/Airports";
+import Header from "./components/Header";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,22 +33,7 @@ const App = () => {
     const classes = useStyles();
     return (
         <div>
-            <AppBar  position="sticky">
-                <Container fixed>
-                    <Toolbar>
-                        <IconButton edge="start" color="inherit"  aria-label="menu"
-                        className={classes.menuButton}>
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="h6" className={classes.title}> Airline app</Typography>
-                        <Box mr={3}>
-                            <Button color="inherit" variant="outlined">Log In</Button>
-                        </Box>
-                        <Button color="secondary" variant="contained">Sign Up</Button>
-                    </Toolbar>
-                </Container>
-
-            </AppBar>
+            <Header />
             <main>
                 <Airports  />
             </main>
