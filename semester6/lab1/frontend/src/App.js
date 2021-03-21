@@ -1,52 +1,58 @@
-import React from "react";
-import Info from './components/info';
-import Form from './components/form';
-import Flight from './components/Flight';
-import Airports from './components/airports'
+import React, { Component } from "react";
+import { makeStyles } from '@material-ui/core/styles';
 
-class Airport {
-  constructor(id, name, city, country) {
-    this.id = id;
-    this.name = name;
-    this.city = city;
-    this.country = country;
-  }
-}
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    Link,
+    Redirect
+} from "react-router-dom";
 
-class App extends React.Component {
+import {AppBar, Box, Button, Container, IconButton, Toolbar, Typography} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import Airports from "./pages/Airports";
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1
+    },
+    title: {
+        flexGrow: 1
+    },
+    menuButton: {
+        marginRight:  theme.spacing(1)
+    },
+    toolbar: theme.mixins.toolbar,
 
-	state = {
-		airports: []
-	}
+}))
 
-  gettingFlight = async () => {
-    fetch(`http://localhost:8081/airports`)
-        .then(res => res.json())
-        .then((data) => {
-          this.setState({ airports: data });
+const App = () => {
 
-    	  console.log(data);
-        })
-        .catch(console.log)
-
-  }
-
-  constructor(props) {
-          super(props);
-   	this.gettingFlight();
-  }
-
-  render() {
+    const classes = useStyles();
     return (
-      <div	>
-      <Info />
-      <Form />
-      <Flight />
-      <Airports airports={this.state.airports} />
-      </div>
+        <div>
+            <AppBar  position="sticky">
+                <Container fixed>
+                    <Toolbar>
+                        <IconButton edge="start" color="inherit"  aria-label="menu"
+                        className={classes.menuButton}>
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="h6" className={classes.title}> Airline app</Typography>
+                        <Box mr={3}>
+                            <Button color="inherit" variant="outlined">Log In</Button>
+                        </Box>
+                        <Button color="secondary" variant="contained">Sign Up</Button>
+                    </Toolbar>
+                </Container>
+
+            </AppBar>
+            <main>
+                <Airports  />
+            </main>
+        </div>
     );
-  }
-}
+};
 
 export default App;
