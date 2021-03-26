@@ -1,7 +1,8 @@
 import React from "react";
-import AirportList from "../components/airports_list";
+import AirportList from "../components/AirportsList";
 import {Box, Container, Grid, Paper} from "@material-ui/core";
 import {getAirports} from "../services/AirplaneApiService";
+import Header from "../components/Header";
 
 
 
@@ -30,6 +31,7 @@ class Airports extends React.Component {
     console.log(this.state.airports);
     return (
         <Box>
+            <Header />
             <Container fixed>
                 <AirportList airports={this.state.airports} />
             </Container>

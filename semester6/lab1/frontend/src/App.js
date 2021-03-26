@@ -3,9 +3,10 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
 } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
+import Airports from "./pages/Airports";
+import Flights from "./pages/Flights";
 
 export default function App() {
     return (
@@ -16,7 +17,10 @@ export default function App() {
                         <LoginPage />
                     </Route>
                     <Route path="/admin">
-                        <Users />
+                        <Flights />
+                    </Route>
+                    <Route path="/airports">
+                        <Airports />
                     </Route>
                     <Route path="/">
                         <Home />
@@ -29,13 +33,5 @@ export default function App() {
 
 function Home() {
     return <h2>Home</h2>;
-}
-
-function About() {
-    return <h2>About</h2>;
-}
-
-function Users() {
-    return <h2>Users</h2>;
 }
 

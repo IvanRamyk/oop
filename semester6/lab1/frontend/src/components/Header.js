@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles, MuiThemeProvider} from '@material-ui/core/styles';
 
-import {AppBar, Box, Button, Container, IconButton, Toolbar, Typography} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import {AppBar, Box, Button, Container, createMuiTheme, IconButton, Toolbar, Typography} from "@material-ui/core";
+import {grey} from "@material-ui/core/colors";
+import {useHistory} from "react-router-dom";
+
+const whiteTheme = createMuiTheme({ palette: { primary: grey } })
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -10,6 +13,11 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 1
+    },
+    button: {
+        flexGrow: 1,
+        marginLeft: theme.spacing(2),
+        marginRight: theme.spacing(2)
     },
     menuButton: {
         marginRight:  theme.spacing(1)
@@ -21,19 +29,27 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
 
     const classes = useStyles();
+    const history = useHistory();
+
+    const openFlights = () => {
+        history.push("/admin")
+    }
+
+    const openAirports = () => {
+        history.push("/airports")
+    }
+
+
     return (
         <AppBar  position="sticky">
             <Container fixed>
                 <Toolbar>
-                    <IconButton edge="start" color="inherit"  aria-label="menu"
-                                className={classes.menuButton}>
-                        <MenuIcon />
-                    </IconButton>
+
                     <Typography variant="h6" className={classes.title}> Airline app</Typography>
-                    <Box mr={3}>
-                        <Button color="inherit" variant="outlined">Log In</Button>
-                    </Box>
-                    <Button color="secondary" variant="contained">Sign Up</Button>
+                        <Button color={"inherit"} variant={"text"} className={classes.button} onClick={openFlights}>Flights</Button>
+                        <Button color={"inherit"} variant={"text"} className={classes.button} onClick={openAirports}>Airports</Button>
+                        <Button color={"inherit"} variant={"text"} className={classes.button} >Employers</Button>
+                    <Button color="secondary" variant="contained" className={classes.menuButton}>Log Out</Button>
                 </Toolbar>
             </Container>
 

@@ -1,22 +1,25 @@
 import React from 'react';
-import { Paper, withStyles, Grid, TextField, Button, FormControlLabel, Checkbox } from '@material-ui/core';
+import {Paper, Grid, TextField, Button, FormControlLabel, Checkbox, makeStyles} from '@material-ui/core';
 import { Face, Fingerprint } from '@material-ui/icons'
 import {airlineLogin, postAirport} from "../services/AirplaneApiService";
 import {useHistory} from "react-router-dom";
-const styles = theme => ({
-    margin: {
-        margin: theme.spacing(2),
+
+
+const useStyles = makeStyles({
+    a: {
+        margin: 16,
     },
-    padding: {
-        padding: theme.spacing(1)
-    }
+    b: {
+        padding: 36
+    },
 });
 
 function LoginTab() {
-
     let login = '';
     let password = '';
     const history = useHistory();
+
+    const classes = useStyles();
 
     const handleLogin = (event) => {
         login = event.target.value;
@@ -40,8 +43,8 @@ function LoginTab() {
 
     //const {classes} = styles;
     return (
-        <Paper className={styles.padding}>
-            <div className={styles.margin}>
+        <Paper className={classes.a}>
+            <div className={classes.b}>
                 <Grid container spacing={8} alignItems="flex-end">
                     <Grid item>
                         <Face/>
@@ -69,4 +72,4 @@ function LoginTab() {
     );
 }
 
-export default withStyles(styles)(LoginTab);
+export default LoginTab;

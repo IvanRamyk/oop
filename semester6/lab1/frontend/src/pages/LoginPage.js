@@ -1,7 +1,5 @@
 import React from "react";
-import AirportList from "../components/airports_list";
-import {Box, Container, createMuiTheme, Grid, MuiThemeProvider, Paper} from "@material-ui/core";
-import {getAirports} from "../services/AirplaneApiService";
+import {createMuiTheme, Grid, MuiThemeProvider, Paper} from "@material-ui/core";
 import LoginForm from "../components/LoginForm";
 
 
