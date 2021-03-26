@@ -1,44 +1,41 @@
-import React, { Component } from "react";
-import { makeStyles } from '@material-ui/core/styles';
-
+import React from "react";
 import {
     BrowserRouter as Router,
-    Route,
     Switch,
-    Link,
-    Redirect
+    Route,
+    Link
 } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
 
-import {AppBar, Box, Button, Container, IconButton, Toolbar, Typography} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-import Airports from "./pages/Airports";
-import Header from "./components/Header";
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1
-    },
-    title: {
-        flexGrow: 1
-    },
-    menuButton: {
-        marginRight:  theme.spacing(1)
-    },
-    toolbar: theme.mixins.toolbar,
-
-}))
-
-const App = () => {
-
-    const classes = useStyles();
+export default function App() {
     return (
-        <div>
-            <Header />
-            <main>
-                <Airports  />
-            </main>
-        </div>
+        <Router>
+            <div>
+                <Switch>
+                    <Route path="/login">
+                        <LoginPage />
+                    </Route>
+                    <Route path="/admin">
+                        <Users />
+                    </Route>
+                    <Route path="/">
+                        <Home />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
     );
-};
+}
 
-export default App;
+function Home() {
+    return <h2>Home</h2>;
+}
+
+function About() {
+    return <h2>About</h2>;
+}
+
+function Users() {
+    return <h2>Users</h2>;
+}
+
