@@ -39,6 +39,10 @@ const Header = () => {
         history.push("/airports")
     }
 
+    const openEmployees = () => {
+        history.push("/employees")
+    }
+
 
     return (
         <AppBar  position="sticky">
@@ -48,7 +52,7 @@ const Header = () => {
                     <Typography variant="h6" className={classes.title}> Airline app</Typography>
                         <Button color={"inherit"} variant={"text"} className={classes.button} onClick={openFlights}>Flights</Button>
                         <Button color={"inherit"} variant={"text"} className={classes.button} onClick={openAirports}>Airports</Button>
-                        <Button color={"inherit"} variant={"text"} className={classes.button} >Employers</Button>
+                        <Button color={"inherit"} variant={"text"} className={classes.button} onClick={openEmployees}>Employers</Button>
                     <Button color="secondary" variant="contained" className={classes.menuButton}>Log Out</Button>
                 </Toolbar>
             </Container>

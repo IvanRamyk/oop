@@ -20,6 +20,17 @@ export function getFlights(){
         })
 }
 
+export function getEmployees(){
+    const requestOptions = {
+        method: 'Get',
+        headers: {},
+    };
+    return fetch(`http://localhost:8081/employees`, requestOptions).then(response => response.json())
+        .then((responseData) => {
+            return responseData;
+        })
+}
+
 export function postAirport(name, city, country){
     console.log(name + " " + city + " " + country + "!");
     console.log({ name: name, city: city, country: country });
@@ -29,6 +40,17 @@ export function postAirport(name, city, country){
         body: JSON.stringify({ name: name, city: city, country: country })
     };
     fetch('http://localhost:8081/airports', requestOptions).then(response => response.json()).then(data => console.log(data));
+}
+
+export function postFlight(datetime, from, to){
+    console.log(datetime + " " + from + " " + to + "!");
+    console.log({ datetime: datetime.getTime(), from: from, to: to });
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ datetime: datetime.getTime(), from: from, to: to })
+    };
+    fetch('http://localhost:8081/flights', requestOptions).then(response => response.json()).then(data => console.log(data));
 }
 
 export function airlineLogin(login, password){

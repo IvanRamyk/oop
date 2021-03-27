@@ -1,4 +1,3 @@
-
 import React from 'react'
 import {
     Box,
@@ -39,8 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
 const AirportList = ({ airports }) => {
     const classes = useStyles();
-    console.log(airports);
-    console.log("!");
   return (
     <Container fixed>
         <Grid direction="row" justify="space-between" alignItems="center" container>

@@ -1,6 +1,6 @@
 import React from "react";
 import {Box, Container} from "@material-ui/core";
-import {getFlights} from "../services/AirplaneApiService";
+import {getAirports, getFlights} from "../services/AirplaneApiService";
 import Header from "../components/Header";
 import FlightsList from "../components/FlightsList";
 
@@ -11,13 +11,16 @@ class Flights extends React.Component {
 
 
     state = {
-        flights: []
+        flights: [],
+        airports: []
     }
 
     gettingFlight = async () => {
         let flights = await getFlights()
+        let airports = await getAirports()
         this.setState({
-            flights: flights
+            flights: flights,
+            airports: airports
         });
 
     }
@@ -33,7 +36,7 @@ class Flights extends React.Component {
             <Box>
                 <Header />
                 <Container fixed>
-                    <FlightsList flights={this.state.flights} />
+                    <FlightsList flights={this.state.flights} airports={this.state.airports} />
                 </Container>
             </Box>
         );

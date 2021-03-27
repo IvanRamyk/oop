@@ -7,6 +7,7 @@ import {
 import LoginPage from "./pages/LoginPage";
 import Airports from "./pages/Airports";
 import Flights from "./pages/Flights";
+import Employees from "./pages/Employees";
 
 export default function App() {
     return (
@@ -21,6 +22,9 @@ export default function App() {
                     </Route>
                     <Route path="/airports">
                         <Airports />
+                    </Route>
+                    <Route path="/employees">
+                        <Employees />
                     </Route>
                     <Route path="/">
                         <Home />

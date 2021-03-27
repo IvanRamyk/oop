@@ -13,6 +13,7 @@ import {
 
 import {makeStyles} from "@material-ui/core/styles";
 import AddFlightFormDialog from "./AddFlightFormDialog";
+import {getAirports} from "../services/AirplaneApiService";
 
 const useStyles = makeStyles((theme) => ({
     cardButtonGroup: {
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 const zeroPad = (num, places) => String(num).padStart(places, '0')
 
-const FlightsList = ({ flights }) => {
+const FlightsList = ({ flights, airports }) => {
     const classes = useStyles();
     console.log(flights);
     console.log("!");
@@ -46,7 +47,7 @@ const FlightsList = ({ flights }) => {
         <Container fixed>
             <Grid direction="row" justify="space-between" alignItems="center" container>
                 <Grid item className={classes.infoItem}><Typography variant={"h4"} > Flights: </Typography></Grid>
-                <Grid item className={classes.infoItem}><AddFlightFormDialog/></Grid>
+                <Grid item className={classes.infoItem}><AddFlightFormDialog airports={airports}/></Grid>
 
             </Grid>
             {flights.map((flight) => (
