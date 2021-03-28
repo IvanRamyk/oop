@@ -9,6 +9,49 @@ export function getAirports(){
         })
 }
 
+export function deleteAirport(id){
+    const requestOptions = {
+        method: 'Delete',
+        headers: {},
+    };
+    return fetch(`http://localhost:8081/airports?id=${id}`, requestOptions).then(response => response.json())
+        .then((responseData) => {
+            return responseData;
+        })
+}
+
+export function deleteFlight(id){
+    const requestOptions = {
+        method: 'Delete',
+        headers: {},
+    };
+    return fetch(`http://localhost:8081/flights?id=${id}`, requestOptions).then(response => response.json())
+        .then((responseData) => {
+            return responseData;
+        })
+}
+
+export function deleteEmployee(id){
+    const requestOptions = {
+        method: 'Delete',
+        headers: {},
+    };
+    return fetch(`http://localhost:8081/employees?id=${id}`, requestOptions).then(response => response.json())
+        .then((responseData) => {
+            return responseData;
+        })
+}
+
+export function deleteEmployeeFromFlight(employeeId, flightId){
+    console.log(employeeId + " " + flightId + "!");
+    const requestOptions = {
+        method: 'Delete',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ employeeId: employeeId, flightId: flightId})
+    };
+    fetch('http://localhost:8081/employees?flight', requestOptions).then(response => response.json()).then(data => console.log(data));
+}
+
 export function getFlights(){
     const requestOptions = {
         method: 'Get',
@@ -62,6 +105,17 @@ export function postEmployee(name, position){
         body: JSON.stringify({ fullName: name, position: position})
     };
     fetch('http://localhost:8081/employees', requestOptions).then(response => response.json()).then(data => console.log(data));
+}
+
+
+export function postEmployeeForFlight(employeeId, flightId){
+    console.log(employeeId + " " + flightId + "!");
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ employeeId: employeeId, flightId: flightId})
+    };
+    fetch('http://localhost:8081/employees?flight', requestOptions).then(response => response.json()).then(data => console.log(data));
 }
 
 export function postFlight(datetime, from, to){

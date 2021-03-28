@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import AddAirportFormDialog from "./AddAirportFormDialog";
+import {deleteAirport} from "../../services/AirplaneApiService";
 
 const useStyles = makeStyles((theme) => ({
     cardButtonGroup: {
@@ -54,7 +55,11 @@ const AirportList = ({ airports }) => {
               <Box justifyContent="flex-end" width={"100%"}>
                   <ButtonGroup color="primary" className={classes.cardButtonGroup} variant={"contained"}>
                       <Button>Edit</Button>
-                      <Button>Delete</Button>
+                      <Button
+                        onClick={() => {
+                            deleteAirport(airport.id).then(r => console.log("Airport deleted"));
+                        }}
+                      >Delete</Button>
                   </ButtonGroup>
               </Box>
           </Card>

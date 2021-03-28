@@ -14,15 +14,18 @@ class FlightDetails extends React.Component {
 
 
     state = {
-        employees: []
+        employees: [],
+        allEmployees: [],
     }
 
     gettingEmployees = async (flight) => {
         let employees = await getFlightEmployees(flight)
+        let allEmployees = await getEmployees()
         console.log(flight);
         console.log(employees);
         this.setState({
-            employees: employees
+            employees: employees,
+            allEmployees: allEmployees
         });
 
     }
@@ -40,7 +43,7 @@ class FlightDetails extends React.Component {
             <Box>
                 <DHeader />
                 <Container fixed>
-                    <FlightEmployeesTable employees={this.state.employees} flight={this.props.location.flight} />
+                    <FlightEmployeesTable employees={this.state.employees} flight={this.props.location.flight} allEmployees={this.state.allEmployees}/>
                 </Container>
             </Box>
         );

@@ -53,7 +53,7 @@ const Header = () => {
                         <Button color={"inherit"} variant={"text"} className={classes.button} onClick={openFlights}>Flights</Button>
                         <Button color={"inherit"} variant={"text"} className={classes.button} onClick={openAirports}>Airports</Button>
                         <Button color={"inherit"} variant={"text"} className={classes.button} onClick={openEmployees}>Employers</Button>
-                    <Button color="secondary" variant="contained" className={classes.menuButton}>Log Out</Button>
+                    <Button color="secondary" variant="contained" className={classes.menuButton} onClick={() => {history.push("/login")}}>Log Out</Button>
                 </Toolbar>
             </Container>
 

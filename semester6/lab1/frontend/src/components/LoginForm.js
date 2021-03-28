@@ -36,6 +36,8 @@ function LoginTab() {
             if (data["role"] === "admin") {
                 console.log("pushing..");
                 history.push("/admin");
+            } else if (data["role"] === "dispatcher"){
+                history.push("/dispatcher");
             }
         }
         ;

@@ -12,7 +12,10 @@ import {
     Typography
 } from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import {Add} from "@material-ui/icons";
+import {Add, Remove} from "@material-ui/icons";
+import AddFlightFormDialog from "../admin/AddFlightFormDialog";
+import AddEmployeeToFlightFormDialog from "./AddEmployeeToFlightFormDialog";
+import {deleteEmployeeFromFlight} from "../../services/AirplaneApiService";
 
 const useStyles = makeStyles((theme) => ({
     cardButtonGroup: {
@@ -46,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
 const zeroPad = (num, places) => String(num).padStart(places, '0')
 
-const FlightEmployeesTable = ({ employees, flight }) => {
+const FlightEmployeesTable = ({ employees, flight, allEmployees }) => {
     const classes = useStyles();
     return (
         <Container fixed>
@@ -89,13 +92,14 @@ const FlightEmployeesTable = ({ employees, flight }) => {
                 <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
                     Employees
                 </Typography>
-                <IconButton className={classes.addBtn}>
-                    <Add />
-                </IconButton>
+                    <AddEmployeeToFlightFormDialog employees={allEmployees} flight={flight}/>
                 </Toolbar>
                 <Table className={classes.table} size="medium" aria-label="a dense table" title={"Employees"} about={"Employees"}>
                     <TableHead aria-label={"Employees"}>
                         <TableRow>
+                            <TableCell padding="checkbox">
+
+                            </TableCell>
                             <TableCell>Id</TableCell>
                             <TableCell>Full name</TableCell>
                             <TableCell align="right">Position</TableCell>
@@ -104,6 +108,13 @@ const FlightEmployeesTable = ({ employees, flight }) => {
                     <TableBody>
                         {employees.map((row) => (
                             <TableRow key={row.id}>
+                                <TableCell component="th" scope="row">
+                                    <IconButton onClick={ () => {
+                                        deleteEmployeeFromFlight(row.id, flight.id)
+                                    }}>
+                                        <Remove />
+                                    </IconButton>
+                                </TableCell>
                                 <TableCell component="th" scope="row">
                                     {row.id}
                                 </TableCell>

@@ -88,12 +88,6 @@ const FlightsCards = ({ flights, airports }) => {
                         </Grid>
 
                     </CardContent>
-                    <Box justifyContent="flex-end" width={"100%"}>
-                        <ButtonGroup color="primary" className={classes.cardButtonGroup} variant={"contained"}>
-                            <Button>Edit</Button>
-                            <Button>Delete</Button>
-                        </ButtonGroup>
-                    </Box>
                 </Card>
             ))}
 
