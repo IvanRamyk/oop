@@ -1,8 +1,8 @@
 import React from "react";
 import {Box, Container} from "@material-ui/core";
-import {getAirports, getFlights} from "../services/AirplaneApiService";
-import Header from "../components/Header";
-import FlightsList from "../components/FlightsList";
+import {getAirports, getFlights} from "../../services/AirplaneApiService";
+import Header from "../../components/admin/Header";
+import FlightsList from "../../components/admin/FlightsList";
 
 
 

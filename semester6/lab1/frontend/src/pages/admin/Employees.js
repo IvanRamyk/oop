@@ -1,8 +1,8 @@
 import React from "react";
 import {Box, Container, Grid, Paper} from "@material-ui/core";
-import {getAirports, getEmployees} from "../services/AirplaneApiService";
-import Header from "../components/Header";
-import EmployeesList from "../components/EmployeesList";
+import {getAirports, getEmployees} from "../../services/AirplaneApiService";
+import Header from "../../components/admin/Header";
+import EmployeesList from "../../components/admin/EmployeesList";
 
 
 

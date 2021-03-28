@@ -7,7 +7,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {getAirports, postAirport, postFlight} from "../services/AirplaneApiService";
+import {getAirports, postAirport, postFlight} from "../../services/AirplaneApiService";
 import DateFnsUtils from '@date-io/date-fns';
 import { KeyboardDatePicker, MuiPickersUtilsProvider, KeyboardTimePicker } from "@material-ui/pickers";
 import {Grid, Input, MenuItem, Select} from "@material-ui/core";

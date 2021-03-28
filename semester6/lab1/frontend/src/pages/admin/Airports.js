@@ -1,8 +1,8 @@
 import React from "react";
-import AirportList from "../components/AirportsList";
+import AirportList from "../../components/admin/AirportsList";
 import {Box, Container, Grid, Paper} from "@material-ui/core";
-import {getAirports} from "../services/AirplaneApiService";
-import Header from "../components/Header";
+import {getAirports} from "../../services/AirplaneApiService";
+import Header from "../../components/admin/Header";
 
 
 

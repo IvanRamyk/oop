@@ -13,7 +13,7 @@ import {
 
 import {makeStyles} from "@material-ui/core/styles";
 import AddFlightFormDialog from "./AddFlightFormDialog";
-import {getAirports} from "../services/AirplaneApiService";
+import {getAirports} from "../../services/AirplaneApiService";
 
 const useStyles = makeStyles((theme) => ({
     cardButtonGroup: {

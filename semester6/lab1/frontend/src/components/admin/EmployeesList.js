@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import AddAirportFormDialog from "./AddAirportFormDialog";
+import AddEmployeeFormDialog from "./AddEmployeeFormDialog";
 
 const useStyles = makeStyles((theme) => ({
     cardButtonGroup: {
@@ -42,7 +43,7 @@ const EmployeesList = ({ employees }) => {
         <Container fixed>
             <Grid direction="row" justify="space-between" alignItems="center" container>
                 <Grid item className={classes.infoItem}><Typography variant={"h4"} > Employees: </Typography></Grid>
-                <Grid item className={classes.infoItem}><AddAirportFormDialog/></Grid>
+                <Grid item className={classes.infoItem}><AddEmployeeFormDialog/></Grid>
 
             </Grid>
             {employees.map((employee) => (
