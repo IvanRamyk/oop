@@ -2,6 +2,7 @@ export function getAirports(){
     const requestOptions = {
         method: 'Get',
         headers: {},
+        credentials: 'include',
     };
     return fetch(`http://localhost:8081/airports`, requestOptions).then(response => response.json())
         .then((responseData) => {
@@ -13,6 +14,7 @@ export function deleteAirport(id){
     const requestOptions = {
         method: 'Delete',
         headers: {},
+        credentials: 'include',
     };
     return fetch(`http://localhost:8081/airports?id=${id}`, requestOptions).then(response => response.json())
         .then((responseData) => {
@@ -24,6 +26,7 @@ export function deleteFlight(id){
     const requestOptions = {
         method: 'Delete',
         headers: {},
+        credentials: 'include',
     };
     return fetch(`http://localhost:8081/flights?id=${id}`, requestOptions).then(response => response.json())
         .then((responseData) => {
@@ -35,6 +38,7 @@ export function deleteEmployee(id){
     const requestOptions = {
         method: 'Delete',
         headers: {},
+        credentials: 'include',
     };
     return fetch(`http://localhost:8081/employees?id=${id}`, requestOptions).then(response => response.json())
         .then((responseData) => {
@@ -47,7 +51,8 @@ export function deleteEmployeeFromFlight(employeeId, flightId){
     const requestOptions = {
         method: 'Delete',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ employeeId: employeeId, flightId: flightId})
+        body: JSON.stringify({ employeeId: employeeId, flightId: flightId}),
+        credentials: 'include',
     };
     fetch('http://localhost:8081/employees?flight', requestOptions).then(response => response.json()).then(data => console.log(data));
 }
@@ -56,6 +61,7 @@ export function getFlights(){
     const requestOptions = {
         method: 'Get',
         headers: {},
+        credentials: 'include',
     };
     return fetch(`http://localhost:8081/flights`, requestOptions).then(response => response.json())
         .then((responseData) => {
@@ -67,6 +73,7 @@ export function getEmployees(){
     const requestOptions = {
         method: 'Get',
         headers: {},
+        credentials: 'include',
     };
     return fetch(`http://localhost:8081/employees`, requestOptions).then(response => response.json())
         .then((responseData) => {
@@ -78,6 +85,7 @@ export function getFlightEmployees(flightId){
     const requestOptions = {
         method: 'Get',
         headers: {},
+        credentials: 'include',
     };
     return fetch(`http://localhost:8081/employees?flight=${flightId}`, requestOptions).then(response => response.json())
         .then((responseData) => {
@@ -92,17 +100,47 @@ export function postAirport(name, city, country){
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name, city: city, country: country })
+        body: JSON.stringify({ name: name, city: city, country: country }),
+        credentials: 'include',
     };
     fetch('http://localhost:8081/airports', requestOptions).then(response => response.json()).then(data => console.log(data));
+
+
 }
+
+
+export function putAirport(id, name, city, country){
+    console.log(name + " " + city + " " + country + "!");
+    console.log({ name: name, city: city, country: country });
+    const requestOptions = {
+        method: 'Put',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id:id, name: name, city: city, country: country }),
+        credentials: 'include',
+    };
+    fetch('http://localhost:8081/airports', requestOptions).then(response => response.json()).then(data => console.log(data));
+
+
+}
+
+export function putEmployee(id, name, position){
+    const requestOptions = {
+        method: 'Put',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: id, fullName: name, position: position}),
+        credentials: 'include',
+    };
+    fetch('http://localhost:8081/employees', requestOptions).then(response => response.json()).then(data => console.log(data));
+}
+
 
 export function postEmployee(name, position){
     console.log(name + " " + position + "!");
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fullName: name, position: position})
+        body: JSON.stringify({ fullName: name, position: position}),
+        credentials: 'include',
     };
     fetch('http://localhost:8081/employees', requestOptions).then(response => response.json()).then(data => console.log(data));
 }
@@ -113,7 +151,8 @@ export function postEmployeeForFlight(employeeId, flightId){
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ employeeId: employeeId, flightId: flightId})
+        body: JSON.stringify({ employeeId: employeeId, flightId: flightId}),
+        credentials: 'include',
     };
     fetch('http://localhost:8081/employees?flight', requestOptions).then(response => response.json()).then(data => console.log(data));
 }
@@ -124,7 +163,20 @@ export function postFlight(datetime, from, to){
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ datetime: datetime.getTime(), from: from, to: to })
+        body: JSON.stringify({ datetime: datetime.getTime(), from: from, to: to }),
+        credentials: 'include',
+    };
+    fetch('http://localhost:8081/flights', requestOptions).then(response => response.json()).then(data => console.log(data));
+}
+
+export function putFlight(id, datetime, from, to){
+    console.log(datetime + " " + from + " " + to + "!");
+    console.log({ datetime: datetime.getTime(), from: from, to: to });
+    const requestOptions = {
+        method: 'Put',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: id, datetime: datetime.getTime(), from: from, to: to }),
+        credentials: 'include',
     };
     fetch('http://localhost:8081/flights', requestOptions).then(response => response.json()).then(data => console.log(data));
 }
@@ -136,9 +188,23 @@ export function airlineLogin(login, password){
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ login: login, password: password})
+        body: JSON.stringify({ login: login, password: password}),
+        credentials: 'include',
     };
     return fetch('http://localhost:8081/login', requestOptions).then(response => response.json()).then((data) => {
+        console.log(data);
+        return data;
+    });
+}
+
+export function airlineLogout(){
+
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+    };
+    return fetch('http://localhost:8081/logout', requestOptions).then(response => response.json()).then((data) => {
         console.log(data);
         return data;
     });

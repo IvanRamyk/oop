@@ -4,6 +4,7 @@ import {makeStyles, MuiThemeProvider} from '@material-ui/core/styles';
 import {AppBar, Box, Button, Container, createMuiTheme, IconButton, Toolbar, Typography} from "@material-ui/core";
 import {grey} from "@material-ui/core/colors";
 import {useHistory} from "react-router-dom";
+import {airlineLogout} from "../../services/AirplaneApiService";
 
 const whiteTheme = createMuiTheme({ palette: { primary: grey } })
 
@@ -53,7 +54,7 @@ const Header = () => {
                         <Button color={"inherit"} variant={"text"} className={classes.button} onClick={openFlights}>Flights</Button>
                         <Button color={"inherit"} variant={"text"} className={classes.button} onClick={openAirports}>Airports</Button>
                         <Button color={"inherit"} variant={"text"} className={classes.button} onClick={openEmployees}>Employers</Button>
-                    <Button color="secondary" variant="contained" className={classes.menuButton} onClick={() => {history.push("/login")}}>Log Out</Button>
+                    <Button color="secondary" variant="contained" className={classes.menuButton} onClick={() => {airlineLogout(); history.push("/login")}}>Log Out</Button>
                 </Toolbar>
             </Container>
 
