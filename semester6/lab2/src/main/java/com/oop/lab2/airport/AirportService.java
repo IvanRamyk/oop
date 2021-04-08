@@ -15,4 +15,8 @@ public class AirportService {
     public List<Airport> getAirports() {
         return studentRepository.findAll();
     }
+
+    public void addAirport(Airport airport) {
+        studentRepository.save(airport);
+    }
 }
