@@ -1,13 +1,27 @@
 package com.oop.lab2.airport;
+
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table
 public class Airport {
-    private int id;
+    @Id
+    @SequenceGenerator(
+            name = "airport_sequence",
+            sequenceName = "airport_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_sequence"
+    )
+    private Long id;
     private String name;
     private String city;
     private String country;
 
-    public Airport(int id, String name, String city, String country) {
+    public Airport(Long id, String name, String city, String country) {
         this.id = id;
         this.name = name;
         this.city = city;
@@ -18,6 +32,10 @@ public class Airport {
         this.name = name;
         this.city = city;
         this.country = country;
+    }
+
+    public Airport() {
+
     }
 
     @Override
@@ -43,11 +61,11 @@ public class Airport {
         return Objects.hash(id, name, city, country);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

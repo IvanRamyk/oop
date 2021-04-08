@@ -6,9 +6,13 @@ import java.util.List;
 
 @Service
 public class AirportService {
+    private final AirportRepository studentRepository;
+
+    public AirportService(AirportRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
     public List<Airport> getAirports() {
-        return List.of(
-                new Airport(1, "Boryspil", "Kyiv", "Ukraine")
-        );
+        return studentRepository.findAll();
     }
 }
