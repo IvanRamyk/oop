@@ -27,4 +27,14 @@ public class AirportController {
     public void addAirport(@RequestBody Airport airport) {
         this.airportService.addAirport(airport);
     }
+
+    @DeleteMapping(path = "{studentId}")
+    public void deleteAirport(@PathVariable("studentId") Long id) {
+        airportService.deleteStudent(id);
+    }
+
+    @PutMapping
+    public void updateAirport(@RequestBody Airport airport){
+        this.airportService.updateAirport(airport);
+    }
 }
