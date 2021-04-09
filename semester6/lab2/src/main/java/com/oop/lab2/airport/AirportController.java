@@ -28,13 +28,13 @@ public class AirportController {
         this.airportService.addAirport(airport);
     }
 
-    @DeleteMapping(path = "{studentId}")
-    public void deleteAirport(@PathVariable("studentId") Long id) {
+    @DeleteMapping(path = "{airportId}")
+    public void deleteAirport(@PathVariable("airportId") Long id) {
         airportService.deleteStudent(id);
     }
 
     @PutMapping
     public void updateAirport(@RequestBody Airport airport){
-        this.airportService.updateAirport(airport);
+        this.airportService.updateEmployee(airport);
     }
 }

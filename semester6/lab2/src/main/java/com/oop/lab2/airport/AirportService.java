@@ -26,9 +26,9 @@ public class AirportService {
     }
 
     @Transactional
-    public void updateAirport(Airport newVersion) {
+    public void updateEmployee(Airport newVersion) {
         Airport oldVersion = repository.findById(newVersion.getId())
-                .orElseThrow(() ->  new IllegalStateException("Student does not exist"));
+                .orElseThrow(() ->  new IllegalStateException("Airport does not exist"));
         if (newVersion.getName() != null
                 && !oldVersion.getName().equals(newVersion.getName())
                 && newVersion.getName().length() > 0
