@@ -1,4 +1,4 @@
-package com.oop.lab2.employee;
+package com.oop.lab2.FlightEmployee;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

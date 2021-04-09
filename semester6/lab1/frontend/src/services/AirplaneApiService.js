@@ -54,7 +54,7 @@ export function deleteEmployeeFromFlight(employeeId, flightId){
         body: JSON.stringify({ employeeId: employeeId, flightId: flightId}),
         //credentials: 'include',
     };
-    fetch('http://localhost:8081/employees?flight', requestOptions).then(response => response.json()).then(data => console.log(data));
+    fetch('http://localhost:8081/flight_employees', requestOptions).then(response => response.json()).then(data => console.log(data));
 }
 
 export function getFlights(){
@@ -87,7 +87,7 @@ export function getFlightEmployees(flightId){
         headers: {},
         //credentials: 'include',
     };
-    return fetch(`http://localhost:8081/employees?flight=${flightId}`, requestOptions).then(response => response.json())
+    return fetch(`http://localhost:8081/employees?flightId=${flightId}`, requestOptions).then(response => response.json())
         .then((responseData) => {
             return responseData;
         })
@@ -154,7 +154,7 @@ export function postEmployeeForFlight(employeeId, flightId){
         body: JSON.stringify({ employeeId: employeeId, flightId: flightId}),
         //credentials: 'include',
     };
-    fetch('http://localhost:8081/employees?flight', requestOptions).then(response => response.json()).then(data => console.log(data));
+    fetch('http://localhost:8081/flight_employees', requestOptions).then(response => response.json()).then(data => console.log(data));
 }
 
 export function postFlight(datetime, from, to){
