@@ -1,23 +1,52 @@
 package com.oop.lab2.employee;
 
-public class EmployeeFlight {
-    private int employeeId;
-    private int flightId;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.Objects;
 
-    public int getEmployeeId() {
+@Entity
+@Table
+@IdClass(EmployeeFlight.class)
+public class EmployeeFlight implements Serializable {
+    @Id
+    public Long employeeId;
+    @Id
+    public Long flightId;
+
+    public EmployeeFlight() {
+
+    }
+
+    public Long getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
 
-    public int getFlightId() {
+    public Long getFlightId() {
         return flightId;
     }
 
-    public void setFlightId(int flightId) {
+    public void setFlightId(Long flightId) {
         this.flightId = flightId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EmployeeFlight)) return false;
+        EmployeeFlight that = (EmployeeFlight) o;
+        return getEmployeeId() == that.getEmployeeId() && getFlightId() == that.getFlightId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEmployeeId(), getFlightId());
     }
 
     @Override
@@ -28,7 +57,7 @@ public class EmployeeFlight {
                 '}';
     }
 
-    public EmployeeFlight(int employeeId, int flightId) {
+    public EmployeeFlight(Long employeeId, Long flightId) {
         this.employeeId = employeeId;
         this.flightId = flightId;
     }

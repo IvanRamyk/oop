@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(path="employees")
 public class EmployeeController {
@@ -17,8 +18,11 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public List<Employee> getEmployees() {
-        return employeeService.getEmployees();
+    public List<Employee> getEmployees(@RequestParam(required = false, defaultValue = "-1") String flightId) {
+        Long id = (long) Integer.parseInt(flightId);
+        if (id == -1)
+            return employeeService.getEmployees();
+        return employeeService.getEmployeesByFlightId(id);
     }
 
 

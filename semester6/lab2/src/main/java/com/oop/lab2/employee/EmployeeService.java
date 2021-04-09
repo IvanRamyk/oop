@@ -3,6 +3,7 @@ package com.oop.lab2.employee;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -42,5 +43,9 @@ public class EmployeeService {
         ) {
             oldVersion.setPosition(newVersion.getPosition());
         }
+    }
+
+    public List<Employee> getEmployeesByFlightId(Long flightId) {
+        return repository.findByFlightId(flightId);
     }
 }

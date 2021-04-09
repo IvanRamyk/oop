@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(path="flights")
 public class FlightController {
@@ -19,6 +20,7 @@ public class FlightController {
 
     @GetMapping
     public List<Flight> getFlights() {
+        System.out.println("Somebody to love!");
         return flightService.getFlights();
     }
 

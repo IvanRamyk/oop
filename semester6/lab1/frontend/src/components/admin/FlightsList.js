@@ -61,15 +61,15 @@ const FlightsList = ({ flights, airports }) => {
                             </Grid>
                             <Grid item>
                                 <Typography variant="h4" color={"primary"} align={"center"}>
-                                    {zeroPad(flight.dateTime.time.hour, 2)
-                                + ":" + zeroPad(flight.dateTime.time.minute, 2)}</Typography>
+                                    {zeroPad(flight.departure.time.hour, 2)
+                                + ":" + zeroPad(flight.departure.time.minute, 2)}</Typography>
 
                                 <Typography variant="h6" color={"primary"} align={"center"}>{
-                                    flight.dateTime.date.day.toString()
+                                    flight.departure.date.day.toString()
                                     + '/' +
-                                    flight.dateTime.date.month.toString()
+                                    flight.departure.date.month.toString()
                                     + '/' +
-                                    flight.dateTime.date.year.toString()
+                                    flight.departure.date.year.toString()
                                 }</Typography>
                             </Grid>
                             <Grid item >
