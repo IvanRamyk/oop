@@ -1,20 +1,20 @@
 package com.oop.lab2.flight;
 
 public class FlightInfo {
-    public FlightInfo(int id, int from, int to, long datetime) {
+    public FlightInfo(Long id, Long from, Long to, long datetime) {
         this.id = id;
         this.from = from;
         this.to = to;
         this.datetime = datetime;
     }
 
-    private int id;
+    private Long id;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -26,19 +26,19 @@ public class FlightInfo {
         this.datetime = datetime;
     }
 
-    private int from;
-    private int to;
+    private Long from;
+    private Long to;
     private long datetime;
 
-    public int getFrom() {
+    public Long getFrom() {
         return from;
     }
 
-    public void setFrom(int from) {
+    public void setFrom(Long from) {
         this.from = from;
     }
 
-    public int getTo() {
+    public Long getTo() {
         return to;
     }
 
@@ -51,7 +51,7 @@ public class FlightInfo {
                 '}';
     }
 
-    public void setTo(int to) {
+    public void setTo(Long to) {
         this.to = to;
     }
 

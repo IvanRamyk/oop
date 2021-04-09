@@ -2,28 +2,42 @@ package com.oop.lab2.flight;
 
 import com.oop.lab2.airport.Airport;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Entity
+@Table(name = "Flight")
 public class Flight {
-    private int id;
-    private Airport from;
-    private Airport to;
-    private LocalDateTime dateTime;
+    @Id
+    private Long id;
 
-    public int getId() {
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "\"from\"", nullable = false)
+    private Airport from;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "\"to\"", nullable = false)
+    private Airport to;
+    private LocalDateTime departure;
+
+    public Flight() {
+
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Flight(int id, Airport from, Airport to, LocalDateTime dateTime) {
+    public Flight(Long id, Airport from, Airport to, LocalDateTime dateTime) {
         this.id = id;
         this.from = from;
         this.to = to;
-        this.dateTime = dateTime;
+        this.departure = dateTime;
     }
 
     @Override
@@ -31,7 +45,7 @@ public class Flight {
         return "Flight{" +
                 "from=" + from +
                 ", to=" + to +
-                ", dateTime=" + dateTime +
+                ", dateTime=" + departure +
                 '}';
     }
 
@@ -40,12 +54,12 @@ public class Flight {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Flight flight = (Flight) o;
-        return Objects.equals(from, flight.from) && Objects.equals(to, flight.to) && Objects.equals(dateTime, flight.dateTime);
+        return Objects.equals(from, flight.from) && Objects.equals(to, flight.to) && Objects.equals(departure, flight.departure);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(from, to, dateTime);
+        return Objects.hash(from, to, departure);
     }
 
     public Airport getFrom() {
@@ -56,6 +70,7 @@ public class Flight {
         this.from = from;
     }
 
+
     public Airport getTo() {
         return to;
     }
@@ -64,11 +79,11 @@ public class Flight {
         this.to = to;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDateTime getDeparture() {
+        return departure;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setDeparture(LocalDateTime departure) {
+        this.departure = departure;
     }
 }
