@@ -59,19 +59,7 @@ const FlightsList = ({ flights, airports }) => {
                                 <Typography variant="h4" color={"primary"}>{"Airport " + flight.from.name}</Typography>
                                 <Typography variant="subtitle1" color={"primary"}>{flight.from.city + ", " + flight.from.country}</Typography>
                             </Grid>
-                            <Grid item>
-                                <Typography variant="h4" color={"primary"} align={"center"}>
-                                    {zeroPad(flight.departure.time.hour, 2)
-                                + ":" + zeroPad(flight.departure.time.minute, 2)}</Typography>
-
-                                <Typography variant="h6" color={"primary"} align={"center"}>{
-                                    flight.departure.date.day.toString()
-                                    + '/' +
-                                    flight.departure.date.month.toString()
-                                    + '/' +
-                                    flight.departure.date.year.toString()
-                                }</Typography>
-                            </Grid>
+                            
                             <Grid item >
                                 <Typography variant="h4" color={"primary"} align={"right"}>{"Airport " + flight.to.name}</Typography>
                                 <Typography variant="subtitle1" color={"primary"} align={"right"}>{flight.to.city + ", " + flight.to.country}</Typography>

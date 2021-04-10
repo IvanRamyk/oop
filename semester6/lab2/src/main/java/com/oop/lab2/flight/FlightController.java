@@ -4,6 +4,7 @@ package com.oop.lab2.flight;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -18,6 +19,7 @@ public class FlightController {
         this.flightService = flightService;
     }
 
+    @RolesAllowed("Admin")
     @GetMapping
     public List<Flight> getFlights() {
         System.out.println("Somebody to love!");
