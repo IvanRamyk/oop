@@ -68,7 +68,7 @@ const FlightsCards = ({ flights, airports }) => {
                                 <Typography variant="h4" color={"primary"}>{"Airport " + flight.from.name}</Typography>
                                 <Typography variant="subtitle1" color={"primary"}>{flight.from.city + ", " + flight.from.country}</Typography>
                             </Grid>
-                            <Grid item>
+                            {/*<Grid item>
                                 <Typography variant="h4" color={"primary"} align={"center"}>
                                     {zeroPad(flight.dateTime.time.hour, 2)
                                     + ":" + zeroPad(flight.dateTime.time.minute, 2)}</Typography>
@@ -80,7 +80,7 @@ const FlightsCards = ({ flights, airports }) => {
                                     + '/' +
                                     flight.dateTime.date.year.toString()
                                 }</Typography>
-                            </Grid>
+                            </Grid>*/}
                             <Grid item >
                                 <Typography variant="h4" color={"primary"} align={"right"}>{"Airport " + flight.to.name}</Typography>
                                 <Typography variant="subtitle1" color={"primary"} align={"right"}>{flight.to.city + ", " + flight.to.country}</Typography>

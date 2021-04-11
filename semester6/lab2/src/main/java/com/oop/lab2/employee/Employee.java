@@ -1,14 +1,14 @@
 package com.oop.lab2.employee;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table
 public class Employee {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
     private String fullName;
     private String position;
@@ -19,6 +19,13 @@ public class Employee {
         this.position = position;
     }
 
+
+    public Employee(String fullName, String position) {
+        this.fullName = fullName;
+        this.position = position;
+    }
+
+	
     public Employee() {
 
     }

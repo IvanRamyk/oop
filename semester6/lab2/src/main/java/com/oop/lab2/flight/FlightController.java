@@ -19,25 +19,26 @@ public class FlightController {
         this.flightService = flightService;
     }
 
-    @RolesAllowed("Admin")
+    @RolesAllowed({"Admin", "Dispatcher"})
     @GetMapping
     public List<Flight> getFlights() {
         System.out.println("Somebody to love!");
         return flightService.getFlights();
     }
 
-
+    @RolesAllowed("Admin")
     @PostMapping
     public void addFlight(@RequestBody FlightInfo flight) {
         this.flightService.addFlight(flight);
     }
 
+    @RolesAllowed("Admin")
     @DeleteMapping(path = "{flightId}")
     public void deleteFlight(@PathVariable("flightId") Long id) {
         flightService.deleteFlight(id);
     }
 
-    @PutMapping
+    @RolesAllowed("Admin")
     public void updateFlight(@RequestBody FlightInfo flight){
         this.flightService.updateFlight(flight);
     }

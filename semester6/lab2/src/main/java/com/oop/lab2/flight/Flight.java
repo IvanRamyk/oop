@@ -7,9 +7,11 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Flight")
+@Table
 public class Flight {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
@@ -39,6 +41,13 @@ public class Flight {
         this.to = to;
         this.departure = dateTime;
     }
+    
+    public Flight(Airport from, Airport to, LocalDateTime dateTime) {
+        this.from = from;
+        this.to = to;
+        this.departure = dateTime;
+    }
+
 
     @Override
     public String toString() {

@@ -1,7 +1,12 @@
+var global_token = "";
+
 export function getAirports(){
+    console.log("from GET : " + global_token);
     const requestOptions = {
         method: 'Get',
-        headers: {},
+        headers: {
+            'Authorization': 'bearer ' + global_token
+        },
         //credentials: 'include',
     };
     return fetch(`http://localhost:8081/airports`, requestOptions).then(response => response.json())
@@ -13,7 +18,10 @@ export function getAirports(){
 export function deleteAirport(id){
     const requestOptions = {
         method: 'Delete',
-        headers: {},
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token
+        },
         //credentials: 'include',
     };
     return fetch(`http://localhost:8081/airports/${id}`, requestOptions).then(response => response.json())
@@ -25,7 +33,10 @@ export function deleteAirport(id){
 export function deleteFlight(id){
     const requestOptions = {
         method: 'Delete',
-        headers: {},
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token
+        },
         //credentials: 'include',
     };
     return fetch(`http://localhost:8081/flights/${id}`, requestOptions).then(response => response.json())
@@ -37,7 +48,9 @@ export function deleteFlight(id){
 export function deleteEmployee(id){
     const requestOptions = {
         method: 'Delete',
-        headers: {},
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token},
         //credentials: 'include',
     };
     return fetch(`http://localhost:8081/employees/${id}`, requestOptions).then(response => response.json())
@@ -50,7 +63,10 @@ export function deleteEmployeeFromFlight(employeeId, flightId){
     console.log(employeeId + " " + flightId + "!");
     const requestOptions = {
         method: 'Delete',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token
+        },
         body: JSON.stringify({ employeeId: employeeId, flightId: flightId}),
         //credentials: 'include',
     };
@@ -60,7 +76,10 @@ export function deleteEmployeeFromFlight(employeeId, flightId){
 export function getFlights(){
     const requestOptions = {
         method: 'Get',
-        headers: {},
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token
+        },
         //credentials: 'include',
     };
     return fetch(`http://localhost:8081/flights`, requestOptions).then(response => response.json())
@@ -72,7 +91,10 @@ export function getFlights(){
 export function getEmployees(){
     const requestOptions = {
         method: 'Get',
-        headers: {},
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token
+        },
         //credentials: 'include',
     };
     return fetch(`http://localhost:8081/employees`, requestOptions).then(response => response.json())
@@ -84,7 +106,10 @@ export function getEmployees(){
 export function getFlightEmployees(flightId){
     const requestOptions = {
         method: 'Get',
-        headers: {},
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token
+        },
         //credentials: 'include',
     };
     return fetch(`http://localhost:8081/employees?flightId=${flightId}`, requestOptions).then(response => response.json())
@@ -99,7 +124,10 @@ export function postAirport(name, city, country){
     console.log({ name: name, city: city, country: country });
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token
+        },
         body: JSON.stringify({ name: name, city: city, country: country }),
         //credentials: 'include',
     };
@@ -114,7 +142,10 @@ export function putAirport(id, name, city, country){
     console.log({ name: name, city: city, country: country });
     const requestOptions = {
         method: 'Put',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token
+        },
         body: JSON.stringify({ id:id, name: name, city: city, country: country }),
         //credentials: 'include',
     };
@@ -126,7 +157,10 @@ export function putAirport(id, name, city, country){
 export function putEmployee(id, name, position){
     const requestOptions = {
         method: 'Put',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token
+        },
         body: JSON.stringify({ id: id, fullName: name, position: position}),
         //credentials: 'include',
     };
@@ -138,7 +172,10 @@ export function postEmployee(name, position){
     console.log(name + " " + position + "!");
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token
+        },
         body: JSON.stringify({ fullName: name, position: position}),
         //credentials: 'include',
     };
@@ -150,7 +187,10 @@ export function postEmployeeForFlight(employeeId, flightId){
     console.log(employeeId + " " + flightId + "!");
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token
+        },
         body: JSON.stringify({ employeeId: employeeId, flightId: flightId}),
         //credentials: 'include',
     };
@@ -162,7 +202,10 @@ export function postFlight(datetime, from, to){
     console.log({ datetime: datetime.getTime(), from: from, to: to });
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token
+        },
         body: JSON.stringify({ datetime: datetime.getTime(), from: from, to: to }),
         //credentials: 'include',
     };
@@ -174,7 +217,10 @@ export function putFlight(id, datetime, from, to){
     console.log({ datetime: datetime.getTime(), from: from, to: to });
     const requestOptions = {
         method: 'Put',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + global_token
+        },
         body: JSON.stringify({ id: id, datetime: datetime.getTime(), from: from, to: to }),
         //credentials: 'include',
     };
@@ -183,18 +229,46 @@ export function putFlight(id, datetime, from, to){
 
 export function airlineLogin(login, password){
 
-    console.log(login + " " + password + "!");
-    console.log({ login: login, password: password });
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ login: login, password: password}),
-        //credentials: 'include',
+    /*
+        curl -X POST '' --header 'Content-Type: application/x-www-form-urlencoded'  --data-urlencode 'grant_type=password'  --data-urlencode 'client_id=spring-boot-app'  --data-urlencode 'client_secret=4442618d-d029-4c06-b77f-12919d37b263'  --data-urlencode 'username=admin'  --data-urlencode 'password=1'
+    */
+
+    var details = {
+        'grant_type': 'password',
+        'client_id': 'spring-boot-app',
+        'client_secret': '4442618d-d029-4c06-b77f-12919d37b263',
+        'username': login,
+        'password': password
     };
-    return fetch('http://localhost:8081/login', requestOptions).then(response => response.json()).then((data) => {
+
+    var formBody = [];
+    for (var property in details) {
+        var encodedKey = encodeURIComponent(property);
+        var encodedValue = encodeURIComponent(details[property]);
+        formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+
+    return fetch('http://localhost:8180/auth/realms/Airport/protocol/openid-connect/token', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formBody
+    }).then((resp) => resp.json().then(data => {
         console.log(data);
-        return data;
-    });
+        global_token = data["access_token"];
+        console.log("Global token is " + global_token);
+        return data
+    }));
+
+
+
+}
+
+export function getToken() {
+    return global_token;
 }
 
 export function airlineLogout(){
@@ -204,8 +278,7 @@ export function airlineLogout(){
         headers: { 'Content-Type': 'application/json' },
         //credentials: 'include',
     };
-    return fetch('http://localhost:8081/logout', requestOptions).then(response => response.json()).then((data) => {
+    fetch('http://localhost:8081/logout', requestOptions).then(response => response.json()).then((data) => {
         console.log(data);
-        return data;
     });
 }

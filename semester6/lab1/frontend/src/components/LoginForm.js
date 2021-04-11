@@ -33,10 +33,10 @@ function LoginTab() {
         let data = await airlineLogin(login, password);
         if (data != null) {
             console.log(data["role"]);
-            if (data["role"] === "admin") {
+            if (login === "admin") {
                 console.log("pushing..");
                 history.push("/admin");
-            } else if (data["role"] === "dispatcher"){
+            } else if (login === "dispatcher"){
                 history.push("/dispatcher");
             }
         }

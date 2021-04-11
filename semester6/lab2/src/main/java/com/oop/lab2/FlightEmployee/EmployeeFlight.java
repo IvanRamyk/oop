@@ -41,7 +41,7 @@ public class EmployeeFlight implements Serializable {
         if (this == o) return true;
         if (!(o instanceof EmployeeFlight)) return false;
         EmployeeFlight that = (EmployeeFlight) o;
-        return getEmployeeId() == that.getEmployeeId() && getFlightId() == that.getFlightId();
+        return getEmployeeId().equals(that.getEmployeeId()) && getFlightId().equals(that.getFlightId());
     }
 
     @Override
