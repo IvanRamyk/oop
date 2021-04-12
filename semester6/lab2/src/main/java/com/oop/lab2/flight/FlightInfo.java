@@ -1,5 +1,7 @@
 package com.oop.lab2.flight;
 
+import java.util.Objects;
+
 public class FlightInfo {
     public FlightInfo(Long id, Long from, Long to, long datetime) {
         this.id = id;
@@ -49,6 +51,19 @@ public class FlightInfo {
                 ", to=" + to +
                 ", datetime=" + datetime +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FlightInfo)) return false;
+        FlightInfo that = (FlightInfo) o;
+        return getDatetime() == that.getDatetime() && Objects.equals(getId(), that.getId()) && Objects.equals(getFrom(), that.getFrom()) && Objects.equals(getTo(), that.getTo());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFrom(), getTo(), getDatetime());
     }
 
     public void setTo(Long to) {

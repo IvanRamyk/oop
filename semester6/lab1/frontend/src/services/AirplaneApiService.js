@@ -273,12 +273,30 @@ export function getToken() {
 
 export function airlineLogout(){
 
+    var details = {
+        'grant_type': 'password',
+        'client_id': 'spring-boot-app',
+        'client_secret': '4442618d-d029-4c06-b77f-12919d37b263',
+    };
+
+    var formBody = [];
+    for (var property in details) {
+        var encodedKey = encodeURIComponent(property);
+        var encodedValue = encodeURIComponent(details[property]);
+        formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'bearer ' + global_token,
+        },
+        body: formBody
         //credentials: 'include',
     };
-    fetch('http://localhost:8081/logout', requestOptions).then(response => response.json()).then((data) => {
+    fetch('\'http://localhost:8180/auth/realms/Airport/protocol/openid-connect/token\'', requestOptions).then(response => response.json()).then((data) => {
         console.log(data);
     });
 }

@@ -1,5 +1,6 @@
 package com.oop.lab2.airport;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -7,11 +8,8 @@ import java.util.List;
 
 @Service
 public class AirportService {
-    private final AirportRepository repository;
-
-    public AirportService(AirportRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private AirportRepository repository;
 
     public List<Airport> getAirports() {
         return repository.findAll();
@@ -25,10 +23,7 @@ public class AirportService {
         repository.deleteById(id);
     }
 
-    @Transactional
-    public void updateEmployee(Airport newVersion) {
-        Airport oldVersion = repository.findById(newVersion.getId())
-                .orElseThrow(() ->  new IllegalStateException("Airport does not exist"));
+    public void updateAirportProps(Airport oldVersion, Airport newVersion) {
         if (newVersion.getName() != null
                 && !oldVersion.getName().equals(newVersion.getName())
                 && newVersion.getName().length() > 0
@@ -49,6 +44,13 @@ public class AirportService {
         ) {
             oldVersion.setCountry(newVersion.getCountry());
         }
+    }
 
+    @Transactional
+    public void updateEmployee(Airport newVersion) {
+        Airport oldVersion = repository.findById(newVersion.getId())
+                .orElseThrow(() ->  new IllegalStateException("Airport does not exist"));
+
+        updateAirportProps(oldVersion, newVersion);
     }
 }

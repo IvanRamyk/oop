@@ -39,18 +39,7 @@ public class FlightService {
         repository.deleteById(id);
     }
 
-    @Transactional
-    public void updateFlight(FlightInfo flightInfo) {
-        Airport from = airportRepository.findById(flightInfo.getFrom())
-                .orElseThrow(() -> new IllegalStateException("Airport does not exist"));
-
-        Airport to = airportRepository.findById(flightInfo.getTo())
-                .orElseThrow(() -> new IllegalStateException("Airport does not exist"));
-
-        Flight oldVersion = repository.findById(flightInfo.getId()).orElseThrow(() -> new IllegalStateException("Flight does not exist"));
-
-        Flight newVersion = new Flight(flightInfo.getId(), from, to, new Timestamp(flightInfo.getDatetime()).toLocalDateTime());
-
+    public void updateFlightProps(Flight oldVersion, Flight newVersion) {
         if (newVersion.getFrom() != null
                 && !oldVersion.getFrom().equals(newVersion.getFrom())
         ) {
@@ -68,6 +57,17 @@ public class FlightService {
         ) {
             oldVersion.setDeparture(newVersion.getDeparture());
         }
+    }
 
+    @Transactional
+    public void updateFlight(FlightInfo flightInfo) {
+        Airport from = airportRepository.findById(flightInfo.getFrom())
+                .orElseThrow(() -> new IllegalStateException("Airport does not exist"));
+
+        Airport to = airportRepository.findById(flightInfo.getTo())
+                .orElseThrow(() -> new IllegalStateException("Airport does not exist"));
+        Flight oldVersion = repository.findById(flightInfo.getId()).orElseThrow(() -> new IllegalStateException("Flight does not exist"));
+        Flight newVersion = new Flight(flightInfo.getId(), from, to, new Timestamp(flightInfo.getDatetime()).toLocalDateTime());
+        updateFlightProps(oldVersion, newVersion);
     }
 }

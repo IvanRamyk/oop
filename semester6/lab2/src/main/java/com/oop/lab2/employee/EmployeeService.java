@@ -26,10 +26,7 @@ public class EmployeeService {
         repository.deleteById(id);
     }
 
-    @Transactional
-    public void updateEmployee(Employee newVersion) {
-        Employee oldVersion = repository.findById(newVersion.getId())
-                .orElseThrow(() ->  new IllegalStateException("Employee does not exist"));
+    public void updateEmployeeProps(Employee oldVersion, Employee newVersion) {
         if (newVersion.getFullName() != null
                 && !oldVersion.getFullName().equals(newVersion.getFullName())
                 && newVersion.getFullName().length() > 0
@@ -43,6 +40,13 @@ public class EmployeeService {
         ) {
             oldVersion.setPosition(newVersion.getPosition());
         }
+    }
+
+    @Transactional
+    public void updateEmployee(Employee newVersion) {
+        Employee oldVersion = repository.findById(newVersion.getId())
+                .orElseThrow(() ->  new IllegalStateException("Employee does not exist"));
+        updateEmployeeProps(oldVersion, newVersion);
     }
 
     public List<Employee> getEmployeesByFlightId(Long flightId) {

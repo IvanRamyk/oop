@@ -22,7 +22,7 @@ export default function App() {
                     <Route path="/admin">
                         <Flights />
                     </Route>
-                    <Route path="/airports">s
+                    <Route path="/airports">
                         <Airports />
                     </Route>
                     <Route path="/employees">
