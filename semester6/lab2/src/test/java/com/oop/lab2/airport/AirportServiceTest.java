@@ -12,9 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest
 public class AirportServiceTest {
@@ -31,11 +29,10 @@ public class AirportServiceTest {
     private AirportRepository repository;
 
     @Test
-    @DisplayName("Test findById Success")
     void testGetAll() {
-        Airport widget = new Airport(1L, "A", "A", "A");
+        Airport airport = new Airport(1L, "A", "A", "A");
         ArrayList<Airport> airportList = new ArrayList<>();
-        airportList.add(widget);
+        airportList.add(airport);
         doReturn(airportList).when(repository).findAll();
 
         List<Airport> returnedWidget = service.getAirports();
@@ -45,7 +42,6 @@ public class AirportServiceTest {
     }
 
     @Test
-    @DisplayName("Test findById Success")
     void testUpdate() {
 
         Airport widget = new Airport(1L, "A", "A", "A");

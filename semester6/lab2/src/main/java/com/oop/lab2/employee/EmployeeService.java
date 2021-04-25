@@ -1,5 +1,6 @@
 package com.oop.lab2.employee;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -8,11 +9,8 @@ import java.util.List;
 
 @Service
 public class EmployeeService {
-    private final EmployeeRepository repository;
-
-    public EmployeeService(EmployeeRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private EmployeeRepository repository;
 
     public List<Employee> getEmployees() {
         return repository.findAll();

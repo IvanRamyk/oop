@@ -4,6 +4,7 @@ package com.oop.lab2.FlightEmployee;
 import com.oop.lab2.airport.Airport;
 import com.oop.lab2.flight.Flight;
 import com.oop.lab2.flight.FlightInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -12,12 +13,8 @@ import java.util.List;
 
 @Service
 public class EmployeeFlightService {
-    private final EmployeeFlightRepository repository;
-
-    public EmployeeFlightService(EmployeeFlightRepository repository) {
-        this.repository = repository;
-    }
-
+    @Autowired
+    private EmployeeFlightRepository repository;
 
     public void addFlightEmployee(EmployeeFlight employeeFlight) {
         repository.save(employeeFlight);

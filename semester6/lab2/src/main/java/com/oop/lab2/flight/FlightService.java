@@ -3,6 +3,7 @@ package com.oop.lab2.flight;
 
 import com.oop.lab2.airport.Airport;
 import com.oop.lab2.airport.AirportRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -12,13 +13,12 @@ import java.util.List;
 
 @Service
 public class FlightService {
-    private final FlightRepository repository;
-    private final AirportRepository airportRepository;
 
-    public FlightService(FlightRepository repository, AirportRepository airportRepository) {
-        this.repository = repository;
-        this.airportRepository = airportRepository;
-    }
+    @Autowired
+    private FlightRepository repository;
+
+    @Autowired
+    private AirportRepository airportRepository;
 
     public List<Flight> getFlights() {
         return repository.findAll();
@@ -31,7 +31,6 @@ public class FlightService {
         Airport to = airportRepository.findById(flightInfo.getTo())
                 .orElseThrow(() -> new IllegalStateException("Airport does not exist"));
         Flight flight = new Flight(flightInfo.getId(), from, to, new Timestamp(flightInfo.getDatetime()).toLocalDateTime());
-        System.out.println(from + " " + to);
         repository.save(flight);
     }
 
